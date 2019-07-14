@@ -211,36 +211,35 @@ const Section = styled.div`
   
 }
 `
-export const pageQuery = graphql`
-query ArchiveQuery($skip: Int!, $limit: Int!) {
-  allContentfulBlog(
-  sort: {fields: [createdAt], order: DESC}
-  filter: { node_locale: {eq: "en-US",}}
-    skip: $skip
-    limit: $limit
-  ){
-  edges {
-    node {
-    id
-    slug
-    title
-    createdAt
-    category {
-      title 
-      id
-    }
-    
-    featuredImage {
-      fluid(maxWidth: 1200, quality: 100) {
-        ...GatsbyContentfulFluid
-        src
-      }
-    }
-    }
-  }
-  }
-
-}
+export const pageQuery = graphql` 
+ query ArchiveQuery ($skip: Int!, $limit: Int!) {
+   allContentfulBlog(
+       sort: { fields: [createdAt], order: DESC }
+       filter: {
+       node_locale: {eq: "en-US",}}
+       skip: $skip
+       limit: $limit
+     ) {
+     edges {
+       node {
+         id
+         slug
+         title
+         createdAt
+         category {
+           title
+           id
+         }
+         featuredImage {
+           fluid(maxWidth: 1200, quality: 85) {
+             src
+             ...GatsbyContentfulFluid
+           }
+         }
+       }
+     }
+   }
+ }
 `
 
 const Feed = styled.div`

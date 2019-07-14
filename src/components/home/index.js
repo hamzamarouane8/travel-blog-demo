@@ -6,7 +6,7 @@ import styled from "styled-components"
 
 export default ({}) => (
   <StaticQuery query={graphql`query HomeQuery {
-  allContentfulBlog(limit: 9, sort: {fields: [createdAt], order: DESC},
+  allContentfulBlog(limit: 4, sort: {fields: [createdAt], order: DESC},
   filter: {node_locale: {eq: "en-US"}, home: {eq: true}}) {
     edges {
       node {

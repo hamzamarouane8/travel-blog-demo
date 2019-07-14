@@ -9,34 +9,34 @@ const assets = {
   img: require('../assets/img/quote.svg')
 }
 export const query = graphql`
-query BlogTemplate($id: String!) {
-  contentfulBlog(id: {eq: $id}){
-    title
-    id
-    slug
-    content {
-      childMarkdownRemark {
-        html
-      }
-    }
-    seoTitle
-    seoDescription
-    seoAuthor
-    seoKeywords
-    seoImage {
-      fluid(maxWidth: 1200, quality: 100) {
-        ...GatsbyContentfulFluid
-      }
-    }
-    featuredImage {
-      fluid(maxWidth: 1200, quality: 100) {
-        ...GatsbyContentfulFluid
-        src
-      }
-    }
-  }
-
-}
+ query BlogTemplate($id: String!) {
+   contentfulBlog(id: {eq: $id}) {
+     title
+     id
+     slug
+     content {
+       childMarkdownRemark {
+         html
+       }
+     }
+     seoTitle
+     seoDescription
+     seoAuthor
+     seoKeywords
+     seoImage {
+       fluid(maxWidth: 1200, quality: 100) {
+         ...GatsbyContentfulFluid
+         src
+       }
+     }
+     featuredImage {
+       fluid(maxWidth: 1200, quality: 100) {
+         ...GatsbyContentfulFluid
+         src
+       }
+     }
+   }
+ }
 `
 
 export default (props) => {

@@ -212,37 +212,37 @@ const Section = styled.div`
   
 }
 `
-export const pageQuery = graphql`
-query TravelQuery($skip: Int!, $limit: Int!) {
-  allContentfulBlog(
-  sort: {fields: [createdAt], order: DESC}
-  filter: { node_locale: {eq: "en-US",},  category: {elemMatch: {title: {eq: "Tech"}}}
-}
-  skip: $skip
-  limit: $limit
-  ){
-  edges {
-    node {
-    id
-    slug
-    title
-    createdAt
-    category {
-      title 
-      id
+export const pageQuery = graphql` 
+ query TravelQuery ($skip: Int!, $limit: Int!) {
+   allContentfulBlog(
+       sort: { fields: [createdAt], order: DESC }
+       filter: {
+       node_locale: {eq: "en-US",}
+       category: {elemMatch: {title: {eq: "Travel"}}}
     }
-    
-    featuredImage {
-      fluid(maxWidth: 1200, quality: 100) {
-        ...GatsbyContentfulFluid
-        src
-      }
-    }
-    }
-  }
-  }
-
-}
+       skip: $skip
+       limit: $limit
+     ) {
+     edges {
+       node {
+         id
+         slug
+         title
+         createdAt
+         category {
+           title
+           id
+         }
+         featuredImage {
+           fluid(maxWidth: 1200, quality: 85) {
+             src
+             ...GatsbyContentfulFluid
+           }
+         }
+       }
+     }
+   }
+ }
 `
 
 const Feed = styled.div`
